@@ -47,10 +47,20 @@ class UserProductItem extends StatelessWidget {
                     child: const Text('No'),
                   ),
                   ElevatedButton(
-                    onPressed: () {
-                      Provider.of<Products>(context, listen: false)
-                          .deleteProduct(id);
-                      Navigator.of(ctx).pop(true);
+                    onPressed: () async {
+                      try {
+                        await Provider.of<Products>(context, listen: false)
+                            .deleteProduct(id);
+                      } catch (error) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text(
+                              'Deleting failed!',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        );
+                      }
                     },
                     child: const Text('Yes'),
                   ),

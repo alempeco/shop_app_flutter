@@ -29,7 +29,7 @@ class AppDrawer extends StatelessWidget {
             title: const Text('Orders'),
             onTap: () {
               Navigator.of(context)
-                  .pushReplacementNamed(OredersScreen.routeName);
+                  .pushReplacementNamed(OrdersScreen.routeName);
             },
           ),
           const Divider(),
